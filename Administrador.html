@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background: black;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .option {
+            width: 200px;
+            margin: 20px;
+            text-align: center;
+        }
+        .option img {
+            width: 100px;
+            height: 100px;
+        }
+        .sidebar {
+            position: absolute;
+            left: 10px;
+            top: 60px;
+            text-align: left;
+        }
+        .sidebar a {
+            display: block;
+            color: blue;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+        .footer {
+            background: black;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        Frutas y Verduras - Av. Neza Manzana 004, Sta Maria Nativitas, Méx.
+    </div>
+    
+    <div class="sidebar">
+        <p><b>Tablas</b></p>
+        <a href="#">Almacén</a>
+        <a href="#">Jefe</a>
+        <a href="#">Localidad</a>
+        <a href="#">Marcas</a>
+        <a href="#">Producto</a>
+        <a href="#">Proveedor</a>
+        <a href="#">Sueldo</a>
+        <a href="#">Tienda</a>
+        <a href="#">Tipos de Daño</a>
+        <a href="#">Vendedor</a>
+        <a href="#">Venta</a>
+    </div>
+    
+    <h2>Administrador</h2>
+    <div class="container">
+        <div class="option">
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Agregar">
+            <p>Agregar</p>
+        </div>
+        <div class="option">
+            <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" alt="Eliminar">
+            <p>Eliminar</p>
+        </div>
+        <div class="option">
+            <img src="https://cdn-icons-png.flaticon.com/512/482/482631.png" alt="Buscar">
+            <p>Buscar</p>
+        </div>
+        <div class="option">
+            <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="Modificar">
+            <p>Modificar</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        © 2025 Copyright. Todos los derechos reservados Tienda "La Rosa".
+    </div>
+</body>
+</html>
