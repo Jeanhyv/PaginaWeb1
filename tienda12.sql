@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-03-2025 a las 23:17:35
+-- Tiempo de generación: 31-03-2025 a las 04:54:13
 -- Versión del servidor: 5.5.24-log
 -- Versión de PHP: 5.4.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `tienda10`
+-- Base de datos: `tienda12`
 --
 
 -- --------------------------------------------------------
@@ -27,12 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `almacen` (
-  `IdAlmacen` int(11) NOT NULL,
+  `IdAlmacen` int(11) NOT NULL AUTO_INCREMENT,
   `IdProducto` int(11) DEFAULT NULL,
   `IdCantidad` int(11) DEFAULT NULL,
   PRIMARY KEY (`IdAlmacen`),
   KEY `IdProducto` (`IdProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Volcado de datos para la tabla `almacen`
@@ -88,7 +88,9 @@ INSERT INTO `almacen` (`IdAlmacen`, `IdProducto`, `IdCantidad`) VALUES
 (47, 47, 351),
 (48, 48, 100),
 (49, 49, 1000),
-(50, 50, 150);
+(50, 50, 150),
+(51, 11, 100),
+(55, 12, 200);
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,7 @@ INSERT INTO `almacen` (`IdAlmacen`, `IdProducto`, `IdCantidad`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `jefe` (
-  `IdJefe` int(11) NOT NULL,
+  `IdJefe` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(255) NOT NULL,
   `ApellidoMaterno` varchar(255) NOT NULL,
   `ApellidoPaterno` varchar(255) NOT NULL,
@@ -106,14 +108,15 @@ CREATE TABLE IF NOT EXISTS `jefe` (
   `Password` varchar(255) NOT NULL,
   PRIMARY KEY (`IdJefe`),
   KEY `IdVendedor` (`IdVendedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=204 ;
 
 --
 -- Volcado de datos para la tabla `jefe`
 --
 
 INSERT INTO `jefe` (`IdJefe`, `Nombre`, `ApellidoMaterno`, `ApellidoPaterno`, `DiaNacimiento`, `IdVendedor`, `Password`) VALUES
-(201, 'Marco', 'Sandoval', 'Vallarta', '2000-01-24', 101, '');
+(201, 'Marco', 'Sandoval', 'Vallarta', '2000-01-24', 101, '123456789'),
+(202, 'DONACIANO', 'qw', 'q', '2025-03-14', 101, '1234567890');
 
 -- --------------------------------------------------------
 
@@ -122,17 +125,18 @@ INSERT INTO `jefe` (`IdJefe`, `Nombre`, `ApellidoMaterno`, `ApellidoPaterno`, `D
 --
 
 CREATE TABLE IF NOT EXISTS `localidad` (
-  `IdLocalidad` int(11) NOT NULL,
+  `IdLocalidad` int(11) NOT NULL AUTO_INCREMENT,
   `NombreLocalidad` varchar(255) NOT NULL,
   PRIMARY KEY (`IdLocalidad`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `localidad`
 --
 
 INSERT INTO `localidad` (`IdLocalidad`, `NombreLocalidad`) VALUES
-(1, 'Amecameca');
+(1, 'Amecameca'),
+(3, 'Tepe');
 
 -- --------------------------------------------------------
 
@@ -141,10 +145,10 @@ INSERT INTO `localidad` (`IdLocalidad`, `NombreLocalidad`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `marcas` (
-  `IdMarca` int(11) NOT NULL,
+  `IdMarca` int(11) NOT NULL AUTO_INCREMENT,
   `NombreMarca` varchar(255) NOT NULL,
   PRIMARY KEY (`IdMarca`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
 
 --
 -- Volcado de datos para la tabla `marcas`
@@ -209,24 +213,24 @@ INSERT INTO `marcas` (`IdMarca`, `NombreMarca`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `productos` (
-  `IdProducto` int(11) NOT NULL,
+  `IdProducto` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(255) NOT NULL,
   `IdMarca` int(11) DEFAULT NULL,
   `FechaCaducidad` date DEFAULT NULL,
   `Cantidad` int(11) DEFAULT NULL,
   `Precio` decimal(10,2) DEFAULT NULL,
-  `IdTipoDaño` int(11) DEFAULT NULL,
+  `IdTipoDano` int(11) DEFAULT NULL,
   `imagenes` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`IdProducto`),
   KEY `IdMarca` (`IdMarca`),
-  KEY `IdTipoDaño` (`IdTipoDaño`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `IdTipoDano` (`IdTipoDano`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`IdProducto`, `Nombre`, `IdMarca`, `FechaCaducidad`, `Cantidad`, `Precio`, `IdTipoDaño`, `imagenes`) VALUES
+INSERT INTO `productos` (`IdProducto`, `Nombre`, `IdMarca`, `FechaCaducidad`, `Cantidad`, `Precio`, `IdTipoDano`, `imagenes`) VALUES
 (1, 'Bistec Pulpa Blanca de Res', 1, '2025-06-20', 234, '164.00', 1, 'Carnes/1.png'),
 (2, 'Bistec Pulpa Negra de Res', 2, '2027-08-20', 185, '165.00', 1, 'Carnes/2.png'),
 (3, 'Filete Basa Blanco', 3, '2025-09-23', 489, '72.00', 1, 'Carnes/3.png'),
@@ -285,20 +289,21 @@ INSERT INTO `productos` (`IdProducto`, `Nombre`, `IdMarca`, `FechaCaducidad`, `C
 --
 
 CREATE TABLE IF NOT EXISTS `proveedor` (
-  `IdProveedor` int(11) NOT NULL,
+  `IdProveedor` int(11) NOT NULL AUTO_INCREMENT,
   `IdMarca` int(11) DEFAULT NULL,
   `IdProducto` int(11) DEFAULT NULL,
   PRIMARY KEY (`IdProveedor`),
   KEY `IdMarca` (`IdMarca`),
   KEY `IdProducto` (`IdProducto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4321570 ;
 
 --
 -- Volcado de datos para la tabla `proveedor`
 --
 
 INSERT INTO `proveedor` (`IdProveedor`, `IdMarca`, `IdProducto`) VALUES
-(4321567, 1, 1);
+(4321567, 1, 1),
+(4321568, 12, 50);
 
 -- --------------------------------------------------------
 
@@ -328,7 +333,7 @@ INSERT INTO `sueldo` (`IdVendedor`, `Sueldo`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tienda` (
-  `IdTienda` int(11) NOT NULL,
+  `IdTienda` int(11) NOT NULL AUTO_INCREMENT,
   `IdLocalidad` int(11) DEFAULT NULL,
   `IdVendedor` int(11) DEFAULT NULL,
   `IdJefe` int(11) DEFAULT NULL,
@@ -337,7 +342,7 @@ CREATE TABLE IF NOT EXISTS `tienda` (
   KEY `IdLocalidad` (`IdLocalidad`),
   KEY `IdVendedor` (`IdVendedor`),
   KEY `IdJefe` (`IdJefe`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `tienda`
@@ -349,20 +354,20 @@ INSERT INTO `tienda` (`IdTienda`, `IdLocalidad`, `IdVendedor`, `IdJefe`, `IdProv
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tiposdaño`
+-- Estructura de tabla para la tabla `tiposdano`
 --
 
-CREATE TABLE IF NOT EXISTS `tiposdaño` (
-  `IdTipoDaño` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tiposdano` (
+  `IdTipoDano` int(11) NOT NULL AUTO_INCREMENT,
   `Descripcion` varchar(255) NOT NULL,
-  PRIMARY KEY (`IdTipoDaño`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`IdTipoDano`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `tiposdaño`
+-- Volcado de datos para la tabla `tiposdano`
 --
 
-INSERT INTO `tiposdaño` (`IdTipoDaño`, `Descripcion`) VALUES
+INSERT INTO `tiposdano` (`IdTipoDano`, `Descripcion`) VALUES
 (1, 'Intacto'),
 (2, 'Envase Dañado'),
 (3, 'Producto Roto');
@@ -374,14 +379,14 @@ INSERT INTO `tiposdaño` (`IdTipoDaño`, `Descripcion`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `vendedor` (
-  `IdVendedor` int(11) NOT NULL,
+  `IdVendedor` int(11) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(255) NOT NULL,
   `ApellidoMaterno` varchar(255) NOT NULL,
   `ApellidoPaterno` varchar(255) NOT NULL,
   `DiaNacimiento` date NOT NULL,
   `Password` varchar(255) NOT NULL,
   PRIMARY KEY (`IdVendedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=105 ;
 
 --
 -- Volcado de datos para la tabla `vendedor`
@@ -399,22 +404,37 @@ INSERT INTO `vendedor` (`IdVendedor`, `Nombre`, `ApellidoMaterno`, `ApellidoPate
 --
 
 CREATE TABLE IF NOT EXISTS `venta` (
-  `IdVenta` int(11) NOT NULL,
+  `IdVenta` int(11) NOT NULL AUTO_INCREMENT,
   `IdVendedor` int(11) DEFAULT NULL,
   `Fecha` date NOT NULL,
   `Monto` decimal(10,2) NOT NULL,
   PRIMARY KEY (`IdVenta`),
   KEY `IdVendedor` (`IdVendedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=320 ;
 
 --
 -- Volcado de datos para la tabla `venta`
 --
 
 INSERT INTO `venta` (`IdVenta`, `IdVendedor`, `Fecha`, `Monto`) VALUES
+(1, 101, '2025-03-30', '60.00'),
 (301, 101, '2004-02-01', '5000.00'),
 (302, 102, '2004-02-02', '7000.00'),
-(303, 103, '2004-02-03', '6000.00');
+(303, 103, '2004-02-03', '6000.00'),
+(304, 101, '2025-03-30', '46.00'),
+(305, 102, '2025-03-30', '88.00'),
+(306, 101, '2025-03-30', '20.00'),
+(307, 101, '2025-03-30', '40.00'),
+(308, 102, '2025-03-30', '161.00'),
+(309, 101, '2025-03-30', '30.00'),
+(310, 101, '2025-03-30', '20.00'),
+(311, 101, '2025-03-30', '104.00'),
+(312, 101, '2025-03-30', '250.00'),
+(313, 101, '2025-03-30', '0.00'),
+(314, 101, '2025-03-30', '20.00'),
+(315, 101, '2025-03-30', '20.00'),
+(316, 101, '2025-03-31', '23.00'),
+(317, 101, '2025-03-31', '23.00');
 
 --
 -- Restricciones para tablas volcadas
@@ -437,7 +457,7 @@ ALTER TABLE `jefe`
 --
 ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`IdMarca`) REFERENCES `marcas` (`IdMarca`),
-  ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`IdTipoDaño`) REFERENCES `tiposdaño` (`IdTipoDaño`);
+  ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`IdTipoDano`) REFERENCES `tiposdano` (`IdTipoDano`);
 
 --
 -- Filtros para la tabla `proveedor`

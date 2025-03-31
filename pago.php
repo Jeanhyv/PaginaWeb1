@@ -2,7 +2,7 @@
 session_start();
 
 // Conexión a la base de datos
-$conn = new mysqli("localhost", "root", "", "Tienda10");
+$conn = new mysqli("localhost", "root", "", "Tienda12");
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
@@ -15,13 +15,6 @@ if (!isset($_SESSION["user"]) || $_SESSION["role"] !== "vendedor") {
 $vendedor_id = $_SESSION["user"];
 $vendedor_nombre = $_SESSION["nombre"];  // Usar el nombre del vendedor guardado en la sesión
 
-// Obtener el id de la siguiente venta (iniciar desde 300)
-$query = "SELECT MAX(IdVenta) AS max_venta FROM Venta";
-$result = $conn->query($query);
-$row = $result->fetch_assoc();
-
-// Si no existen ventas, comienza desde 300
-$venta_id = $row['max_venta'] ? $row['max_venta'] + 1 : 300;
 
 // Calcular total de la compra
 $total = 0;
@@ -131,7 +124,7 @@ unset($_SESSION["carrito"]);
         <h2>Tienda "La Rosa"</h2>
         <p><strong>Fecha:</strong> <?php echo $fecha; ?></p>
         <p><strong>Vendedor:</strong> <?php echo $vendedor_nombre; ?></p>
-        <p><strong>ID de Venta:</strong> <?php echo $venta_id; ?></p>
+
         <hr>
         <h3>Productos</h3>
         <ul class="productos-list">

@@ -9,35 +9,58 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
+            background-color: #f4f4f4;
         }
         .header {
-            background: black;
+            background: #333;
             color: white;
-            padding: 10px;
-            font-size: 18px;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
         }
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 40px;
+            gap: 20px;
         }
         .option {
-            width: 200px;
-            margin: 20px;
+            width: 180px;
             text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .option:hover {
+            transform: scale(1.05);
+            cursor: pointer;
         }
         .option img {
-            width: 100px;
-            height: 100px;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+        .option a {
+            display: block;
+            color: #333;
+            font-size: 16px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .option a:hover {
+            color: #007bff;
         }
         .sidebar {
             position: absolute;
             left: 10px;
             top: 60px;
             text-align: left;
+            font-size: 16px;
         }
         .sidebar a {
             display: block;
@@ -46,13 +69,14 @@
             margin: 5px 0;
         }
         .footer {
-            background: black;
+            background: #333;
             color: white;
-            padding: 10px;
+            padding: 15px;
             position: fixed;
             bottom: 0;
             width: 100%;
             font-size: 14px;
+            text-align: center;
         }
     </style>
 </head>
@@ -61,38 +85,33 @@
         Frutas y Verduras - Av. Neza Manzana 004, Sta Maria Nativitas, Méx.
     </div>
     
-    <div class="sidebar">
-        <p><b>Tablas</b></p>
-        <a href="#">Almacén</a>
-        <a href="#">Jefe</a>
-        <a href="#">Localidad</a>
-        <a href="#">Marcas</a>
-        <a href="#">Producto</a>
-        <a href="#">Proveedor</a>
-        <a href="#">Sueldo</a>
-        <a href="#">Tienda</a>
-        <a href="#">Tipos de Daño</a>
-        <a href="#">Vendedor</a>
-        <a href="#">Venta</a>
-    </div>
     
-    <h2>Administrador</h2>
+    <h2 style="text-align: center; margin-top: 20px;">Administrador</h2>
+    
     <div class="container">
         <div class="option">
-            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Agregar">
-            <p>Agregar</p>
+            <a href="http://localhost/Hola/formulario_producto.php">
+                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828817.png" alt="Agregar">
+                <p>Agregar</p>
+            </a>
         </div>
         <div class="option">
-            <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" alt="Eliminar">
-            <p>Eliminar</p>
+            <a href="eliminar.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" alt="Eliminar">
+                <p>Eliminar</p>
+            </a>
         </div>
         <div class="option">
-            <img src="https://cdn-icons-png.flaticon.com/512/482/482631.png" alt="Buscar">
-            <p>Buscar</p>
+            <a href="buscar.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/482/482631.png" alt="Buscar">
+                <p>Buscar</p>
+            </a>
         </div>
         <div class="option">
-            <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="Modificar">
-            <p>Modificar</p>
+            <a href="modificar.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png" alt="Modificar">
+                <p>Modificar</p>
+            </a>
         </div>
     </div>
     

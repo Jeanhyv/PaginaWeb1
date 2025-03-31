@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Eliminación - La Rosa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="number"] {
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #CC0000;
+        }
+        .regresar {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .regresar a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .regresar a:hover {
+            text-decoration: underline;
+        }
+        .message {
+            background-color: #FFFAE6;
+            padding: 10px;
+            border: 1px solid #FFD700;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #FFA500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>La Rosa - Eliminar Registro</h1>
+        
+        <form action="http://localhost/Hola/eliminarProducto.php" method="POST">
+            <label for="seleccion">Seleccionar opción:</label>
+            <select id="seleccion" name="seleccion">
+                <option value="almacen">Almacén</option>
+                <option value="Jefe">Jefe</option>
+                <option value="Localidad">Localidad</option>
+                <option value="Marcas">Marcas</option>
+                <option value="Producto">Producto</option>
+                <option value="Proveedor">Proveedor</option>
+                <option value="Sueldo">Sueldo</option>
+                <option value="Tienda">Tienda</option>
+                <option value="Tipos de Daño">Tipos de Daño</option>
+                <option value="Vendedor">Vendedor</option>
+                <option value="Venta">Venta</option>
+            </select>
+
+            <!-- Mensaje dinámico que muestra qué tabla está seleccionada -->
+            <div id="message" class="message">
+                Por favor, seleccione una opción para ver el mensaje de confirmación.
+            </div>
+
+            <input type="hidden" id="numero" name="numero" value="1">
+
+            <label for="idRegistro">ID del Registro a Eliminar:</label>
+            <input type="number" id="idRegistro" name="idRegistro" required>
+
+            <input type="submit" value="Eliminar">
+        </form>
+
+        <div class="regresar">
+            <a href="Administrador.html">Menú principal</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("seleccion").addEventListener("change", function() {
+            let opciones = {
+                "almacen": 1,
+                "Jefe": 2,
+                "Localidad": 3,
+                "Marcas": 4,
+                "Producto": 5,
+                "Proveedor": 6,
+                "Sueldo": 7,
+                "Tienda": 8,
+                "Tipos de Daño": 9,
+                "Vendedor": 10,
+                "Venta": 11
+            };
+            
+            document.getElementById("numero").value = opciones[this.value];
+
+            // Mostrar el mensaje dinámico con la tabla seleccionada
+            let mensaje = "";
+            switch (this.value) {
+                case "almacen":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Almacén.";
+                    break;
+                case "Jefe":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Jefe.";
+                    break;
+                case "Localidad":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Localidad.";
+                    break;
+                case "Marcas":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Marcas.";
+                    break;
+                case "Producto":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Producto.";
+                    break;
+                case "Proveedor":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Proveedor.";
+                    break;
+                case "Sueldo":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Sueldo.";
+                    break;
+                case "Tienda":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Tienda.";
+                    break;
+                case "Tipos de Daño":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Tipos de Daño.";
+                    break;
+                case "Vendedor":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Vendedor.";
+                    break;
+                case "Venta":
+                    mensaje = "Está a punto de eliminar un registro de la tabla Venta.";
+                    break;
+                default:
+                    mensaje = "Por favor, seleccione una opción para ver el mensaje de confirmación.";
+                    break;
+            }
+
+            document.getElementById("message").innerHTML = mensaje;
+        });
+    </script>
+</body>
+</html>
